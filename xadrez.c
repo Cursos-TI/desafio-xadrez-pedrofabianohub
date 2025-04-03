@@ -1,32 +1,99 @@
 #include <stdio.h>
 
-// Desafio de Xadrez - MateCheck
-// Este código inicial serve como base para o desenvolvimento do sistema de movimentação das peças de xadrez.
-// O objetivo é utilizar estruturas de repetição e funções para determinar os limites de movimentação dentro do jogo.
+// Desafio de Xadrez - MateCheck - Nível mestre - Pedro Fabiano Vieira dos Santos
 
-int main() {
-    // Nível Novato - Movimentação das Peças
-    // Sugestão: Declare variáveis constantes para representar o número de casas que cada peça pode se mover.
+void movimentoTorre(int num)
+{
+    if (num > 0)
+    {
+        printf("Direita \n");
+        movimentoTorre(num - 1);
+    }
+}
 
-    // Implementação de Movimentação do Bispo
-    // Sugestão: Utilize uma estrutura de repetição para simular a movimentação do Bispo em diagonal.
+void movimentoBispo(int num)
+{
+    if (num > 0)
+    {
+        printf("Cima ");
+        for (int i = num; i >= num; i--)
+        {
+            printf("Direita \n");
+        }
 
-    // Implementação de Movimentação da Torre
-    // Sugestão: Utilize uma estrutura de repetição para simular a movimentação da Torre para a direita.
+        movimentoBispo(num - 1);
+    }
+}
 
-    // Implementação de Movimentação da Rainha
-    // Sugestão: Utilize uma estrutura de repetição para simular a movimentação da Rainha para a esquerda.
+void movimentoRainha(int num)
+{
+    if (num > 0)
+    {
+        printf("Esquerda \n");
+        movimentoRainha(num - 1);
+    }
+}
 
-    // Nível Aventureiro - Movimentação do Cavalo
-    // Sugestão: Utilize loops aninhados para simular a movimentação do Cavalo em L.
-    // Um loop pode representar a movimentação horizontal e outro vertical.
+void movimentoCavalo()
+{
 
-    // Nível Mestre - Funções Recursivas e Loops Aninhados
-    // Sugestão: Substitua as movimentações das peças por funções recursivas.
-    // Exemplo: Crie uma função recursiva para o movimento do Bispo.
+    int quantidadeMaxHorizontal = 1;
+    int quantidadeMaxVertical = 2;
 
-    // Sugestão: Implemente a movimentação do Cavalo utilizando loops com variáveis múltiplas e condições avançadas.
-    // Inclua o uso de continue e break dentro dos loops.
+    for (int i = 0; i < quantidadeMaxHorizontal; i++)
+    {
+        for (int j = 0; j < quantidadeMaxVertical; j++)
+        {
+            printf("Cima ");
+        }
+
+        printf("Direita \n");
+    }
+}
+
+int main()
+{
+
+    int opcao = 0;
+
+    do
+    {
+        printf("Peças de xadrez e seus movimentos:\n");
+        printf("1 - Mover torre\n");
+        printf("2 - Mover bispo\n");
+        printf("3 - Mover rainha\n");
+        printf("4 - Mover cavalo\n");
+        printf("5 - Sair\n");
+        printf("Digite a opção desejada: ");
+        scanf("%d", &opcao);
+
+        switch (opcao)
+        {
+        case 1:
+            int num = 4;
+            movimentoTorre(num);
+            break;
+        case 2:
+            num = 4;
+            movimentoBispo(num);
+            break;
+        case 3:
+            num = 8;
+            movimentoRainha(num);
+            break;
+        case 4:
+            movimentoCavalo();
+            break;
+        default:
+            if (opcao != 5)
+            {
+                printf("Opção inválida, tente novamente. \n");
+            }
+        }
+
+    } while (opcao != 5);
+
+    printf("Encerrando o programa...");
 
     return 0;
 }
